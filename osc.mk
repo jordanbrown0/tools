@@ -10,4 +10,4 @@ case $# in
 esac
 
 cd $1
-time make -j2
+time make -j3
