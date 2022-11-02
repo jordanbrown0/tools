@@ -10,6 +10,11 @@ case $# in
 esac
 
 d="$1"
+if [ -d "$d" ]; then
+    echo "$d already exists" >&2
+    exit 1
+fi
+
 mkdir $d
 cd $d
 cmake .. -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON

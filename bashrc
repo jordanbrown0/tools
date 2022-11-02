@@ -189,6 +189,8 @@
 # 
 # alias cd=cd_func
 alias vi=vim
-export PATH=/mingw64/bin:$PATH
 alias make=mingw32-make
 alias j=jobs
+
+export PATH=/mingw64/bin:$PATH
+export EDITOR=/usr/bin/vim

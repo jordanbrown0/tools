@@ -3,3 +3,5 @@
 	name = Jordan Brown
 [credential]
 	helper = store
+[pull]
+	rebase = true
