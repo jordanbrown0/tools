@@ -1,0 +1,24 @@
+#! /bin/sh
+
+myname=$0
+
+function usage {
+    echo "Usage: $myname user/repo [target]" >&2
+    exit 1
+}
+
+case $# in
+1|2) ;;
+*) usage ;;
+esac
+
+user_repo=$1
+shift
+
+case "$user_repo" in
+*/*/*) usage ;;
+*/*) ;;
+*) usage ;;
+esac
+
+git clone "https://github.com/$user_repo" "$@"

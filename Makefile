@@ -4,6 +4,7 @@ INS = cp $< $@
 install:	\
 	$(BIN)			\
 	$(BIN)/dt		\
+	$(BIN)/ghclone		\
 	$(BIN)/osc.cmk		\
 	$(BIN)/osc.mk		\
 	$(BIN)/osc.tests	\
@@ -19,6 +20,8 @@ $(BIN):
 	mkdir $@
 
 $(BIN)/dt:		dt
+	$(INS)
+$(BIN)/ghclone:		ghclone
 	$(INS)
 $(BIN)/osc.cmk:		osc.cmk
 	$(INS)
