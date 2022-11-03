@@ -1,0 +1,29 @@
+#! /bin/sh -e
+
+myname=$0
+dir=$HOME/openscad
+
+function usage {
+    echo "Usage: $myname user/repo target" >&2
+    echo "target is relative to \$HOME/openscad." >&2
+    exit 1
+}
+
+case $# in
+2) ;;
+*) usage ;;
+esac
+
+user_repo=$1
+target=$2
+
+case "$user_repo" in
+*/*/*) usage ;;
+*/*) ;;
+*) usage ;;
+esac
+
+git clone "https://github.com/$user_repo" "$dir/$target"
+cd "$dir/$target"
+git submodule update --init
+git remote add upstream https://github.com/openscad/openscad

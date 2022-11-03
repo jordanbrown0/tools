@@ -8,6 +8,7 @@ install:	\
 	$(BIN)/osc.cmk		\
 	$(BIN)/osc.mk		\
 	$(BIN)/osc.tests	\
+	$(BIN)/osclone		\
 	$(HOME)/.bash_logout	\
 	$(HOME)/.bash_profile	\
 	$(HOME)/.bashrc		\
@@ -22,6 +23,8 @@ $(BIN):
 $(BIN)/dt:		dt
 	$(INS)
 $(BIN)/ghclone:		ghclone
+	$(INS)
+$(BIN)/osclone:		osclone
 	$(INS)
 $(BIN)/osc.cmk:		osc.cmk
 	$(INS)
