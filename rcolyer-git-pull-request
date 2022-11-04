@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PRNUM="$1"
+
+if [ "$PRNUM" == "" ]
+then
+  echo "$0 <pull-request-number>"
+  exit -1
+fi
+
+git checkout master &&
+git pull &&
+git fetch origin pull/"$PRNUM"/head:pr-"$PRNUM" &&
+git checkout pr-"$PRNUM"

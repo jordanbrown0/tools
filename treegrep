@@ -1,0 +1,23 @@
+#! /bin/sh
+
+usage() {
+    echo "Usage: $0 [-w] pattern find-args" >&2
+    exit 1
+}
+
+grep_opts=()
+while getopts ilw opt; do
+    case $opt in
+    i|l|w)
+        grep_opts+=-$opt
+        ;;
+    ?)
+        usage
+        ;;
+    esac
+done
+
+shift $(expr $OPTIND - 1 )
+pattern=$1
+shift
+find "$@" -type f -print0 -o -name .git -prune | xargs -0 grep "${grep_opts[@]}" "$pattern"

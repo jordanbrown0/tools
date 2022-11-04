@@ -1,0 +1,2 @@
+#! /bin/sh
+/mingw64/bin/convert $1 $2 -alpha On -compose difference -composite -threshold 10% -morphology Erode Square:2 -format '%[fx:w*h*mean]' info:
