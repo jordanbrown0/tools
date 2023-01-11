@@ -1,11 +1,11 @@
 #! /bin/sh
 
 case $# in
-1)
+0)
+    echo "Usage: $0 dir [cmake-args]" >&2
+    exit 1
     ;;
 *)
-    echo "Usage: $0 dir" >&2
-    exit 1
     ;;
 esac
 
@@ -14,7 +14,8 @@ if [ -d "$d" ]; then
     echo "$d already exists" >&2
     exit 1
 fi
+shift
 
 mkdir $d
 cd $d
-cmake .. -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON
+cmake .. -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON "$@"
