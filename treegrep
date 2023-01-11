@@ -9,7 +9,7 @@ grep_opts=()
 while getopts ilw opt; do
     case $opt in
     i|l|w)
-        grep_opts+=-$opt
+        grep_opts+=( -$opt )
         ;;
     ?)
         usage
