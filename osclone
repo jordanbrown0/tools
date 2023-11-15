@@ -25,5 +25,5 @@ esac
 
 git clone "https://github.com/$user_repo" "$dir/$target"
 cd "$dir/$target"
-git submodule update --init
+git submodule update --init --recursive
 git remote add upstream https://github.com/openscad/openscad
