@@ -25,9 +25,8 @@ esac
 
 git clone "https://github.com/$user_repo" "$dir/$target"
 cd "$dir/$target"
+git switch $target || git switch -c $target
 git submodule update --init --recursive
 git remote add upstream https://github.com/openscad/openscad
 git remote set-url origin https://github.com/jordanbrown0/openscad
 git config --local --add --bool push.autoSetupRemote true
-git branch $target
-git switch $target
