@@ -20,4 +20,4 @@ done
 shift $(expr $OPTIND - 1 )
 pattern=$1
 shift
-find "$@" -type f -print0 -o -name .git -prune | xargs -0 grep "${grep_opts[@]}" "$pattern"
+find "$@" -type f -print0 -o -name .git -prune | xargs -0 grep "${grep_opts[@]}" -- "$pattern"
