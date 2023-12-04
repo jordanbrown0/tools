@@ -191,6 +191,8 @@
 alias vi=vim
 alias make=mingw32-make
 alias j=jobs
+alias pu=pushd
+alias po=popd
 
 export PATH=/mingw64/bin:$PATH
 export EDITOR=/usr/bin/vim
