@@ -1,4 +1,4 @@
-#! /bin/sh -e
+#! /bin/bash -e
 
 myname=$0
 dir=$HOME/openscad
