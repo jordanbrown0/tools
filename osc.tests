@@ -15,5 +15,5 @@ shift
 #cp -v "/mingw64/bin/opengl32.dll" .
 cp -v winconsole/openscad.com .
 cd tests
-ctest -j2 -E 'opencsgtest_issue1165|opencsgtest_issue1215|throwntogethertest_issue1089|throwntogethertest_issue1215|openscad-nonascii|import_3mf|3mfpngtest|3mfexport' "$@"
+ctest -j4 -E 'opencsgtest_issue1165|opencsgtest_issue1215|throwntogethertest_issue1089|throwntogethertest_issue1215|openscad-nonascii|import_3mf|3mfpngtest|3mfexport' "$@"
 # |pdfexporttest_centered
