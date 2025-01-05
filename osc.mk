@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -e
 
 case $# in
 0)
@@ -15,7 +15,12 @@ else
     echo "Using only one job; set $HOME/.make.jobs."
     jobs=1
 fi
-cd $1
+
+if ! root=$(git rev-parse --show-toplevel); then
+    exit 1
+fi
+
+cd $root/$1
 shift
 set -x
 time make -j$jobs "$@"
