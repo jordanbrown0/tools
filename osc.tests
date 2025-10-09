@@ -2,18 +2,42 @@
 set -e
 
 case $# in
-0)  echo "Usage: $0 dir" >&2
+0)  echo "Usage: $0 dir [args]" >&2
     exit 1
     ;;
 *)  ;;
 esac
 
-cd $1
+case "$1" in
+-*)
+    echo "Forgot build directory name." >&2
+    exit 1
+esac
+
+if [ -r $HOME/.make.jobs ]; then
+    jobs=$(cat $HOME/.make.jobs)
+else
+    echo "Using only one job; set $HOME/.make.jobs."
+    jobs=1
+fi
+
+if ! root=$(git rev-parse --show-toplevel); then
+    exit 1
+fi
+
+if [ ! -d $root/$1 ]; then
+    echo "$root/$1 is not a directory." >&2
+    exit 1
+fi
+
+cd $root/$1
 shift
 # I believe that some previous version needed this, but now it causes
 # PNG exports to SIGSEGV.
 #cp -v "/mingw64/bin/opengl32.dll" .
 cp -v winconsole/openscad.com .
-cd tests
-ctest -j4 -E 'opencsgtest_issue1165|opencsgtest_issue1215|throwntogethertest_issue1089|throwntogethertest_issue1215|openscad-nonascii|import_3mf|3mfpngtest|3mfexport' "$@"
+exclude=
+#exclude="-E 'opencsgtest_issue1165|opencsgtest_issue1215|throwntogethertest_issue1089|throwntogethertest_issue1215|openscad-nonascii|import_3mf|3mfpngtest|3mfexport'"
+set -x
+time ctest -j$jobs $exclude "$@"
 # |pdfexporttest_centered

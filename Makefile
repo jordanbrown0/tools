@@ -1,5 +1,5 @@
 BIN = $(HOME)/bin
-INS = cp $< $@; chmod +x $@
+INS = cp '$<' '$@'; chmod +x '$@'
 
 install:	\
 	$(BIN)			\
