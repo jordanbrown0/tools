@@ -12,7 +12,9 @@ esac
 d="$1"
 if [ -d "$d" ]; then
     echo "$d already exists" >&2
-    exit 1
+    # Initially, it seemed that running cmake twice failed, but recently it
+    # seems to be OK, so let it just go...
+    # exit 1
 fi
 shift
 
