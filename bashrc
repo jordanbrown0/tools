@@ -192,11 +192,10 @@ alias vi=vim
 alias j=jobs
 alias pu=pushd
 alias po=popd
-case $(uname -s) in
-MINGW*)
-    alias make=mingw32-make
-    ;;
-esac
+#case $(uname -s) in
+#MINGW*)
+#    alias make=mingw32-make
+#    ;;
+#esac
 
-export PATH=/mingw64/bin:$PATH
 export EDITOR=/usr/bin/vim
