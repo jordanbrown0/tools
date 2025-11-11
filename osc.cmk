@@ -18,7 +18,16 @@ if [ -d "$d" ]; then
 fi
 shift
 
+case $(uname -s) in
+MINGW*)
+    export CMAKE_GENERATOR="MSYS Makefiles"
+    ;;
+*)
+    unset CMAKE_GENERATOR
+    ;;
+esac
+
 mkdir $d
 cd $d
-cmake .. -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON "$@"
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON "$@"
 # cmake .. -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DMANIFOLD_DEBUG=ON -DEXPERIMENTAL=ON -DSNAPSHOT=ON "$@"
