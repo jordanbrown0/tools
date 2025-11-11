@@ -32,10 +32,16 @@ fi
 
 cd $root/$1
 shift
-# I believe that some previous version needed this, but now it causes
-# PNG exports to SIGSEGV.
-#cp -v "/mingw64/bin/opengl32.dll" .
-cp -v winconsole/openscad.com .
+
+case $(uname -s) in
+MINGW*)
+    # I believe that some previous version needed this, but now it causes
+    # PNG exports to SIGSEGV.
+    #cp -v "/mingw64/bin/opengl32.dll" .
+    cp -v winconsole/openscad.com .
+    ;;
+esac
+
 exclude=
 #exclude="-E 'opencsgtest_issue1165|opencsgtest_issue1215|throwntogethertest_issue1089|throwntogethertest_issue1215|openscad-nonascii|import_3mf|3mfpngtest|3mfexport'"
 set -x
