@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -e
 
 case $# in
 0)
@@ -27,7 +27,7 @@ MINGW*)
     ;;
 esac
 
-mkdir $d
+mkdir $d || true # ignore failure
 cd $d
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON "$@"
 # cmake .. -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DMANIFOLD_DEBUG=ON -DEXPERIMENTAL=ON -DSNAPSHOT=ON "$@"
