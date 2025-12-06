@@ -14,7 +14,11 @@ case "$1" in
     exit 1
 esac
 
-if [ -r $HOME/.make.jobs ]; then
+hostname=$(hostname)
+
+if [ -r $HOME/.make.jobs.$hostname ]; then
+    jobs=$(cat $HOME/.make.jobs.$hostname)
+elif [ -r $HOME/.make.jobs ]; then
     jobs=$(cat $HOME/.make.jobs)
 else
     echo "Using only one job; set $HOME/.make.jobs."
