@@ -7,10 +7,11 @@ install:	\
 	$(BIN)/ghclone		\
 	$(BIN)/git_changed_files    \
 	$(BIN)/includes.py      \
+	$(BIN)/osc.boot 	\
+	$(BIN)/osc.clone	\
 	$(BIN)/osc.cmk		\
 	$(BIN)/osc.mk		\
 	$(BIN)/osc.tests	\
-	$(BIN)/osclone		\
 	$(BIN)/pngcmp           \
 	$(BIN)/pull             \
 	$(BIN)/rcolyer-git-pull-request \
@@ -30,7 +31,9 @@ $(BIN)/dt:		dt
 	$(INS)
 $(BIN)/ghclone:		ghclone
 	$(INS)
-$(BIN)/osclone:		osclone
+$(BIN)/osc.boot:	osc.boot
+	$(INS)
+$(BIN)/osc.clone:	osc.clone
 	$(INS)
 $(BIN)/osc.cmk:		osc.cmk
 	$(INS)
