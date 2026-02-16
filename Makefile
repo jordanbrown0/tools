@@ -7,6 +7,7 @@ install:	\
 	$(BIN)/ghclone		\
 	$(BIN)/git_changed_files    \
 	$(BIN)/includes.py      \
+	$(BIN)/mxe		\
 	$(BIN)/osc.boot 	\
 	$(BIN)/osc.clone	\
 	$(BIN)/osc.cmk		\
@@ -40,6 +41,8 @@ $(BIN)/osc.cmk:		osc.cmk
 $(BIN)/osc.mk:		osc.mk
 	$(INS)
 $(BIN)/osc.tests:	osc.tests
+	$(INS)
+$(BIN)/mxe:		mxe
 	$(INS)
 $(BIN)/git_changed_files:	git_changed_files
 	$(INS)
